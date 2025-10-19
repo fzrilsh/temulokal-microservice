@@ -1,8 +1,9 @@
 package repository
 
 import (
-	"fmt"
-	"net/smtp"
+	"sync"
+
+	"gopkg.in/gomail.v2"
 )
 
 type EmailData struct {
@@ -16,32 +17,37 @@ type EmailRepository interface {
 }
 
 type emailRepository struct {
-	auth    *smtp.Auth
-	address *string
-	from    *string
+	dialer *gomail.Dialer
+	sender string
 }
 
 // constructor
 func NewEmailRepository(host string, port int, sender string, password string) EmailRepository {
-	auth := smtp.PlainAuth("", sender, password, host)
-	address := fmt.Sprintf("%s:%d", host, port)
+	dialer := gomail.NewDialer(host, port, sender, password)
+	dialer.SSL = true
+
 	return &emailRepository{
-		auth:    &auth,
-		address: &address,
-		from:    &sender,
+		dialer: dialer,
+		sender: sender,
 	}
 }
 
 func (r *emailRepository) SendEmail(data EmailData) error {
-	msg := []byte(fmt.Sprintf("To: %s\r\nSubject: %s\r\n\r\n%s",
-		data.To,
-		data.Subject,
-		data.Body,
-	))
+	m := gomail.NewMessage()
+	m.SetHeader("From", r.sender)
+	m.SetHeader("To", data.To)
+	m.SetHeader("Subject", data.Subject)
+	m.SetBody("text/html", data.Body)
 
-	if err := smtp.SendMail(*r.address, *r.auth, *r.from, []string{data.To}, msg); err != nil {
-		return fmt.Errorf("failed to send email: %w", err)
-	}
+	// setup wait group
+	var wg sync.WaitGroup
+	wg.Add(1)
+
+	// send email with fire and forget system but still make sure the program is running.
+	go func() {
+		defer wg.Done()
+		go r.dialer.DialAndSend(m)
+	}()
 
 	return nil
 }
