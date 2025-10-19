@@ -199,8 +199,42 @@
 						"disableBodyPruning": true
 					},
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "full_name",
+									"value": "{{full_name}}",
+									"type": "text",
+									"uuid": "0c51ef67-b4d8-4ad2-b2b9-0f335fd05cc4",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "wrong",
+									"type": "text",
+									"uuid": "844a258b-b1e6-4a82-ba36-5688ae0b4a99"
+								},
+								{
+									"key": "password",
+									"value": "wrong",
+									"type": "text",
+									"uuid": "b0efea94-f74f-47dc-be7e-811cd0450d5a"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/auth/register",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"register"
+							]
+						}
 					},
 					"response": [
 						{
