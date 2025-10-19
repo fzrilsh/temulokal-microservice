@@ -396,6 +396,63 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"email already registered\"\n}"
+						},
+						{
+							"id": "23352431-fcadfc7c-6edd-40c8-be42-4fef83fe7e1f",
+							"name": "New Request",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 07:46:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"You are registered successfully\"\n}"
 						}
 					]
 				}
