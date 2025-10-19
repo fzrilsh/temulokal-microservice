@@ -8,7 +8,7 @@ import (
 	"temulokal-microservice/auth-service/repository"
 	"temulokal-microservice/auth-service/usecase"
 	"temulokal-microservice/auth-service/utils/database"
-	"temulokal-microservice/auth-service/utils/jwt"
+	"temulokal-microservice/shared-service/jwt"
 
 	"github.com/gofiber/fiber/v2"
 )
