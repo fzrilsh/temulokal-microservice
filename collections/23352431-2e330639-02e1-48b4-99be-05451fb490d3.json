@@ -206,7 +206,7 @@
 							"formdata": [
 								{
 									"key": "full_name",
-									"value": "{{full_name}}",
+									"value": "jamal",
 									"type": "text",
 									"uuid": "0c51ef67-b4d8-4ad2-b2b9-0f335fd05cc4"
 								},
