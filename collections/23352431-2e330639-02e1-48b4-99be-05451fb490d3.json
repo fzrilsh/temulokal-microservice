@@ -399,7 +399,7 @@
 						},
 						{
 							"id": "23352431-fcadfc7c-6edd-40c8-be42-4fef83fe7e1f",
-							"name": "New Request",
+							"name": "Success",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
