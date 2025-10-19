@@ -3,9 +3,9 @@ package handler
 import (
 	"temulokal-microservice/auth-service/repository"
 	"temulokal-microservice/auth-service/usecase"
-	"temulokal-microservice/auth-service/utils/validator"
 	"temulokal-microservice/shared-service/jwt"
 	"temulokal-microservice/shared-service/response"
+	"temulokal-microservice/shared-service/validator"
 
 	"github.com/gofiber/fiber/v2"
 )
