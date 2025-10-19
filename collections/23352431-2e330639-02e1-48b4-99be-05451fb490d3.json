@@ -191,6 +191,18 @@
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid email or password\"\n}"
 						}
 					]
+				},
+				{
+					"name": "New Request",
+					"id": "23352431-95623d19-846d-4b04-b8c9-c6563c61d335",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
 				}
 			],
 			"id": "23352431-53f7ba6e-3776-4693-b300-5345499f8d6d"
