@@ -248,6 +248,72 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid request body\"\n}"
+						},
+						{
+							"id": "23352431-113f0a6b-9995-4137-9e6a-7455f5a883e0",
+							"name": "Invalid Fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "full_name",
+											"value": "{{full_name}}",
+											"type": "text",
+											"uuid": "0c51ef67-b4d8-4ad2-b2b9-0f335fd05cc4",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "wrong",
+											"type": "text",
+											"uuid": "844a258b-b1e6-4a82-ba36-5688ae0b4a99"
+										},
+										{
+											"key": "password",
+											"value": "wrong",
+											"type": "text",
+											"uuid": "b0efea94-f74f-47dc-be7e-811cd0450d5a"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 07:35:15 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "159"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid fields\",\n    \"error\": [\n        {\n            \"field\": \"full_name\",\n            \"tag\": \"required\"\n        },\n        {\n            \"field\": \"email\",\n            \"tag\": \"email\"\n        },\n        {\n            \"field\": \"password\",\n            \"tag\": \"min\"\n        }\n    ]\n}"
 						}
 					]
 				}
