@@ -18,7 +18,7 @@ func RegisterRoutes(app *fiber.App) {
 	db := database.Connect(cfg)
 	jwtManager := jwt.NewJWTManager(cfg.AppEnv, cfg.JWTSecret, time.Hour*24*5)
 
-	emailRepo := repository.NewEmailRepository(cfg.Host, cfg.Port, cfg.Username, cfg.Password, cfg.From)
+	emailRepo := repository.NewEmailRepository(cfg.SMTPHost, cfg.SMTPPort, cfg.SMTPSender, cfg.SMTPPassword)
 	userRepo := repository.NewUserRepository(db)
 	authUsecase := usecase.NewAuthUsecase(userRepo)
 
