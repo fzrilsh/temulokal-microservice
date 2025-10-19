@@ -212,13 +212,13 @@
 								},
 								{
 									"key": "email",
-									"value": "wrong",
+									"value": "{{email}}",
 									"type": "text",
 									"uuid": "844a258b-b1e6-4a82-ba36-5688ae0b4a99"
 								},
 								{
 									"key": "password",
-									"value": "wrong",
+									"value": "{{password}}",
 									"type": "text",
 									"uuid": "b0efea94-f74f-47dc-be7e-811cd0450d5a"
 								}
