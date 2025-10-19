@@ -200,29 +200,21 @@
 					},
 					"request": {
 						"method": "POST",
-						"header": [],
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "full_name",
-									"value": "jamal",
-									"type": "text",
-									"uuid": "0c51ef67-b4d8-4ad2-b2b9-0f335fd05cc4"
-								},
-								{
-									"key": "email",
-									"value": "{{email}}",
-									"type": "text",
-									"uuid": "844a258b-b1e6-4a82-ba36-5688ae0b4a99"
-								},
-								{
-									"key": "password",
-									"value": "{{password}}",
-									"type": "text",
-									"uuid": "b0efea94-f74f-47dc-be7e-811cd0450d5a"
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
 							"raw": "{{baseUrl}}/auth/register",
