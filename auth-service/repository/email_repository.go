@@ -22,13 +22,13 @@ type emailRepository struct {
 }
 
 // constructor
-func NewEmailRepository(host string, port int, username string, password string, from string) EmailRepository {
-	auth := smtp.PlainAuth("", username, password, host)
+func NewEmailRepository(host string, port int, sender string, password string) EmailRepository {
+	auth := smtp.PlainAuth("", sender, password, host)
 	address := fmt.Sprintf("%s:%d", host, port)
 	return &emailRepository{
 		auth:    &auth,
 		address: &address,
-		from:    &from,
+		from:    &sender,
 	}
 }
 
