@@ -45,7 +45,8 @@ func (h *LoginHandler) Handler(c *fiber.Ctx) error {
 	}
 
 	return response.Success(c, fiber.StatusOK, "Logged in successfully", fiber.Map{
-		"token": token,
-		"user":  user,
+		"token":     token,
+		"full_name": user.FullName,
+		"email":     user.Email,
 	})
 }
