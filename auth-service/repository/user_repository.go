@@ -1,9 +1,7 @@
 package repository
 
 import (
-	"encoding/json"
 	"errors"
-	"net/http"
 
 	"temulokal-microservice/auth-service/model"
 	"temulokal-microservice/auth-service/utils/passwords"
@@ -31,19 +29,11 @@ func NewUserRepository(db *gorm.DB) UserRepository {
 }
 
 func (r *userRepository) FindByEmail(email string) (*model.User, error) {
-	resp, err := r.HTTPClient.Get("http://localhost:8002/api/users/find-by-email?email="+email, nil)
-	if err != nil {
-		return nil, err
-	}
-	defer resp.Body.Close()
-
-	if resp.StatusCode != http.StatusOK {
-		return nil, errors.New("user not found")
-	}
-
 	var user model.User
-	if err := json.NewDecoder(resp.Body).Decode(&user); err != nil {
-		return nil, err
+	result := r.db.Where("email = ?", email).First(&user)
+
+	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+		return nil, errors.New("user not found")
 	}
 
 	return &user, nil
