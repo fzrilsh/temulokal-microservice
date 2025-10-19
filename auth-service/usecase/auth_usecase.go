@@ -65,7 +65,7 @@ func (u *AuthUsecase) Login(email string, password string) (*model.User, error) 
 		return nil, errors.New("invalid")
 	}
 
-	if passwords.CheckPasswordHash(password, user.Password) {
+	if !passwords.CheckPasswordHash(password, user.Password) {
 		return nil, errors.New("invalid")
 	}
 
