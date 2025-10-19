@@ -1,0 +1,255 @@
+{
+	"info": {
+		"_postman_id": "23352431-2e330639-02e1-48b4-99be-05451fb490d3",
+		"name": "TemuLokal - Microservice",
+		"description": "# 📨 TemuLokal API Documentation\n\n## 🌐 Overview\n\nTemuLokal API menyediakan berbagai layanan untuk mendukung platform **TemuLokal**, termasuk autentikasi pengguna, verifikasi email, pengelolaan UMKM, dan sistem lokasi real-time.\n\nSemua endpoint tersedia dalam Postman Collection ini dan menggunakan **Bearer Token Authentication**.  \nKoleksi ini juga dilengkapi dengan contoh respons (saved responses) di setiap request untuk memudahkan pengujian.\n\n---\n\n## 🚀 Getting Started\n\n### 1\\. Import Collection\n\nImport Postman Collection `TemuLokal.postman_collection.json` ke akun Postman kamu.  \nSemua variable penting seperti:\n\n- `baseUrl`\n    \n- `token`\n    \n- `full_name`\n    \n- `email`\n    \n- `password`  \n    ...sudah disediakan di **tab Variables** di level collection.\n    \n\n---\n\n### 2\\. Base URL\n\nGunakan variable `{{baseUrl}}` agar environment mudah diganti.\n\n```\n{{baseUrl}}/\n\n ```\n\nContoh:\n\n```\nGET {{baseUrl}}/auth/login\n\n ```\n\n---\n\n## 🔑 Authentication\n\n### Type\n\nBearer Token (JWT)\n\n### Header\n\n```\nAuthorization: Bearer {{token}}\n\n ```\n\nUntuk mendapatkan token, jalankan endpoint:\n\n```\nPOST {{baseUrl}}/auth/login\n\n ```\n\nBody:\n\n``` json\n{\n  \"email\": \"{{email}}\",\n  \"password\": \"{{password}}\"\n}\n\n ```\n\nResponse:\n\n``` json\n{\n  \"success\": true,\n  \"data\": {\n    \"token\": \"eyJhbGciOi...\"\n  }\n}\n\n ```\n\nToken tersebut otomatis disimpan di variable `token` untuk digunakan di seluruh request lainnya.\n\n---\n\n## 🧭 API Endpoints\n\n| Module | Description | Example Request |\n| --- | --- | --- |\n| 🔐 **Auth** | Register, login, verify email | `POST /auth/register` |\n| 👤 **User** | Profile, update info, change password | `GET /users/profile` |\n| 🏪 **UMKM** | List, create, and manage UMKM data | `POST /umkm/create` |\n| 📍 **Location** | Track nearby UMKM in real-time | `GET /umkm/nearby?lat=...&lng=...` |\n\n💡 Semua endpoint dilengkapi **Saved Responses** di Postman.  \nKamu bisa melihat contoh struktur response (success/error) di tab \"Examples\".\n\n---\n\n## ⚙️ Variables\n\n| Variable | Description | Example |\n| --- | --- | --- |\n| `baseUrl` | URL utama API | `https://api.temulokal.id` |\n| `token` | JWT Bearer Token aktif | (auto-updated setelah login) |\n| `full_name` | Nama lengkap pengguna | `Fazril Syaveral Hillaby` |\n| `email` | Email pengguna | `user@example.com` |\n| `password` | Password pengguna | `password123` |\n\nSemua variable dapat dilihat dan disunting di **tab Variables** pada collection.\n\n---\n\n## ❗ Error Response Format\n\nAPI akan mengembalikan format error berikut untuk request yang gagal:\n\n``` json\n{\n    \"status\": \"error\",\n    \"message\": \"Invalid fields\",\n    \"error\": [\n        {\n            \"field\": \"email\",\n            \"tag\": \"email\"\n        },\n        {\n            \"field\": \"password\",\n            \"tag\": \"min\"\n        }\n    ]\n}\n\n ```\n\nJika token tidak valid atau kadaluarsa:\n\n``` json\n{\n  \"success\": false,\n  \"message\": \"unauthorized\"\n}\n\n ```\n\n---\n\n## 📈 Rate Limits\n\n- Maksimum **300 request per menit** per token.\n    \n- HTTP 429 Too Many Requests\n    \n\n---\n\n## 🆘 Need Help?\n\nJika mengalami kesulitan:\n\n- Lihat dokumentasi API di tab **Documentation** Postman.\n    \n- Cek contoh request & response di **Saved Responses**.\n    \n- Hubungi tim TemuLokal melalui email: [<b>fazril.hillaby@binus.ac.id</b>](https://mailto:fazril.hillaby@binus.ac.id)\n    \n\n---\n\n## 🧩 Notes\n\n- Semua request wajib menggunakan **HTTPS**.\n    \n- Gunakan **environment variables** untuk mengganti base URL (misal: staging → production).\n    \n- Collection ini mendukung **asynchronous testing** menggunakan Postman scripts.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Login",
+					"id": "23352431-d0c8414c-3864-4110-9a7b-c71a82b29cab",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/auth/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"id": "23352431-bc1c75ca-6bf6-4bcd-9b19-e47be97fd94e",
+							"name": "Empty Body",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 05:03:54 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "51"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid request body\"\n}"
+						},
+						{
+							"id": "23352431-a05722ca-a82a-4ff3-ba19-68c50dd5914b",
+							"name": "Invalid Fields",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "wrong",
+											"type": "text",
+											"uuid": "3ad8fc88-0ec4-4d3c-8627-1e52c6a651a6"
+										},
+										{
+											"key": "password",
+											"value": "wrong",
+											"type": "text",
+											"uuid": "0289eeba-36db-40ab-97bc-301958fa814b"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity",
+							"code": 422,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 05:05:10 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "125"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid fields\",\n    \"error\": [\n        {\n            \"field\": \"email\",\n            \"tag\": \"email\"\n        },\n        {\n            \"field\": \"password\",\n            \"tag\": \"min\"\n        }\n    ]\n}"
+						},
+						{
+							"id": "23352431-2fc59ac3-30fc-4a76-8306-83e704b22935",
+							"name": "Invalid Credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "wrong@wrong.id",
+											"type": "text",
+											"uuid": "3ad8fc88-0ec4-4d3c-8627-1e52c6a651a6"
+										},
+										{
+											"key": "password",
+											"value": "wrongpass123",
+											"type": "text",
+											"uuid": "0289eeba-36db-40ab-97bc-301958fa814b"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 05:06:20 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "56"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid email or password\"\n}"
+						}
+					]
+				}
+			],
+			"id": "23352431-53f7ba6e-3776-4693-b300-5345499f8d6d"
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{token}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "e9c8f0e7-7273-4269-8826-f2ceed568752",
+				"type": "text/javascript",
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "3b0411d7-600e-4815-90c1-d16599ec3301",
+				"type": "text/javascript",
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "https://farming-simulator.pstmn.io"
+		},
+		{
+			"key": "token",
+			"value": ""
+		},
+		{
+			"key": "full_name",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "password",
+			"value": ""
+		}
+	]
+}
