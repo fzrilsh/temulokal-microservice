@@ -342,7 +342,7 @@
 						},
 						{
 							"id": "23352431-4a095e0d-116d-4b0e-8fd5-9efccd37ce7d",
-							"name": "New Request",
+							"name": "Email Exist",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
