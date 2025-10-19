@@ -48,6 +48,65 @@
 					},
 					"response": [
 						{
+							"id": "23352431-5ff783da-c6e8-4f15-b5b8-4eb78ab56774",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"type": "text",
+											"uuid": "3ad8fc88-0ec4-4d3c-8627-1e52c6a651a6"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text",
+											"uuid": "0289eeba-36db-40ab-97bc-301958fa814b"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 08:30:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Logged in successfully\",\n    \"data\": {\n        \"email\": \"fazriloke18@gmail.com\",\n        \"full_name\": \"Fazril Syaveral Hillaby\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE3NjEyOTQ2MTcsImlhdCI6MTc2MDg2MjYxN30.u2uMEkAZVf29txeftOWK0tDoqf_aqKd7z59PEIx8SHU\"\n    }\n}"
+						},
+						{
 							"id": "23352431-bc1c75ca-6bf6-4bcd-9b19-e47be97fd94e",
 							"name": "Empty Body",
 							"originalRequest": {
@@ -206,65 +265,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid email or password\"\n}"
-						},
-						{
-							"id": "23352431-5ff783da-c6e8-4f15-b5b8-4eb78ab56774",
-							"name": "Success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "{{email}}",
-											"type": "text",
-											"uuid": "3ad8fc88-0ec4-4d3c-8627-1e52c6a651a6"
-										},
-										{
-											"key": "password",
-											"value": "{{password}}",
-											"type": "text",
-											"uuid": "0289eeba-36db-40ab-97bc-301958fa814b"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{baseUrl}}/auth/login",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"auth",
-										"login"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": null,
-							"header": [
-								{
-									"key": "Date",
-									"value": "Sun, 19 Oct 2025 08:30:17 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "289"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Logged in successfully\",\n    \"data\": {\n        \"email\": \"fazriloke18@gmail.com\",\n        \"full_name\": \"Fazril Syaveral Hillaby\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE3NjEyOTQ2MTcsImlhdCI6MTc2MDg2MjYxN30.u2uMEkAZVf29txeftOWK0tDoqf_aqKd7z59PEIx8SHU\"\n    }\n}"
 						}
 					]
 				},
@@ -304,6 +304,63 @@
 						}
 					},
 					"response": [
+						{
+							"id": "23352431-fcadfc7c-6edd-40c8-be42-4fef83fe7e1f",
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/register",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"register"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 07:46:05 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "64"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"You are registered successfully\"\n}"
+						},
 						{
 							"id": "23352431-2f07cd88-2efb-45f8-8e56-cdd7798846d5",
 							"name": "Empty Body",
@@ -472,63 +529,6 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"email already registered\"\n}"
-						},
-						{
-							"id": "23352431-fcadfc7c-6edd-40c8-be42-4fef83fe7e1f",
-							"name": "Success",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/auth/register",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"auth",
-										"register"
-									]
-								}
-							},
-							"status": "Created",
-							"code": 201,
-							"_postman_previewlanguage": null,
-							"header": [
-								{
-									"key": "Date",
-									"value": "Sun, 19 Oct 2025 07:46:05 GMT"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json"
-								},
-								{
-									"key": "Content-Length",
-									"value": "64"
-								},
-								{
-									"key": "Vary",
-									"value": "Origin"
-								}
-							],
-							"cookie": [],
-							"responseTime": null,
-							"body": "{\n    \"status\": \"success\",\n    \"message\": \"You are registered successfully\"\n}"
 						}
 					]
 				}
