@@ -9,6 +9,7 @@ import (
 )
 
 type Config struct {
+	FrontendOrigin string
 	// App
 	AppName   string
 	AppPort   string
@@ -36,10 +37,11 @@ func Load() *Config {
 	SMTPPort, _ := strconv.Atoi(os.Getenv("SMTP_PORT"))
 
 	cfg := &Config{
-		AppName:   os.Getenv("APP_NAME"),
-		AppPort:   os.Getenv("APP_PORT"),
-		AppEnv:    os.Getenv("APP_ENV"),
-		AppOrigin: os.Getenv("APP_ORIGIN"),
+		FrontendOrigin: os.Getenv("FRONTEND_ORIGIN"),
+		AppName:        os.Getenv("APP_NAME"),
+		AppPort:        os.Getenv("APP_PORT"),
+		AppEnv:         os.Getenv("APP_ENV"),
+		AppOrigin:      os.Getenv("APP_ORIGIN"),
 
 		DBHost: os.Getenv("DB_HOST"),
 		DBUser: os.Getenv("DB_USER"),
