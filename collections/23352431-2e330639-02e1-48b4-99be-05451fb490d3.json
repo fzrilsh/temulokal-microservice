@@ -206,6 +206,65 @@
 							"cookie": [],
 							"responseTime": null,
 							"body": "{\n    \"status\": \"error\",\n    \"message\": \"Invalid email or password\"\n}"
+						},
+						{
+							"id": "23352431-5ff783da-c6e8-4f15-b5b8-4eb78ab56774",
+							"name": "Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "email",
+											"value": "{{email}}",
+											"type": "text",
+											"uuid": "3ad8fc88-0ec4-4d3c-8627-1e52c6a651a6"
+										},
+										{
+											"key": "password",
+											"value": "{{password}}",
+											"type": "text",
+											"uuid": "0289eeba-36db-40ab-97bc-301958fa814b"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{baseUrl}}/auth/login",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"auth",
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "Date",
+									"value": "Sun, 19 Oct 2025 08:30:17 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289"
+								},
+								{
+									"key": "Vary",
+									"value": "Origin"
+								}
+							],
+							"cookie": [],
+							"responseTime": null,
+							"body": "{\n    \"status\": \"success\",\n    \"message\": \"Logged in successfully\",\n    \"data\": {\n        \"email\": \"fazriloke18@gmail.com\",\n        \"full_name\": \"Fazril Syaveral Hillaby\",\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjo3LCJleHAiOjE3NjEyOTQ2MTcsImlhdCI6MTc2MDg2MjYxN30.u2uMEkAZVf29txeftOWK0tDoqf_aqKd7z59PEIx8SHU\"\n    }\n}"
 						}
 					]
 				},
