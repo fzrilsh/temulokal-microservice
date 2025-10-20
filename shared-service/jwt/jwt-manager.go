@@ -7,7 +7,6 @@ import (
 )
 
 type JWTManager struct {
-	appEnv        string
 	secretKey     string
 	tokenDuration time.Duration
 }
@@ -17,9 +16,8 @@ type UserClaims struct {
 	jwt.RegisteredClaims
 }
 
-func NewJWTManager(appEnv string, secretKey string, duration time.Duration) *JWTManager {
+func NewJWTManager(secretKey string, duration time.Duration) *JWTManager {
 	return &JWTManager{
-		appEnv:        appEnv,
 		secretKey:     secretKey,
 		tokenDuration: duration,
 	}
