@@ -534,6 +534,18 @@
 				}
 			],
 			"id": "23352431-53f7ba6e-3776-4693-b300-5345499f8d6d"
+		},
+		{
+			"name": "Rate Limiter",
+			"id": "23352431-12961970-7c12-4d67-9445-7f6494543dc5",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
 		}
 	],
 	"auth": {
