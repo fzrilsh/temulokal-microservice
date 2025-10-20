@@ -13,3 +13,7 @@ var startCmd = &cobra.Command{
 		bootstrap.StartProxy()
 	},
 }
+
+func init() {
+	rootCmd.AddCommand(startCmd)
+}
