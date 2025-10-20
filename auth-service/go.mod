@@ -5,6 +5,7 @@ go 1.24.1
 require (
 	github.com/gofiber/fiber/v2 v2.52.9
 	github.com/joho/godotenv v1.5.1
+	github.com/patrickmn/go-cache v2.1.0+incompatible
 	github.com/spf13/cobra v1.10.1
 	golang.org/x/crypto v0.42.0
 	gopkg.in/gomail.v2 v2.0.0-20160411212932-81ebce5c23df
