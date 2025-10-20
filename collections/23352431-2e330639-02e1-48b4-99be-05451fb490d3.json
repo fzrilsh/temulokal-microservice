@@ -544,6 +544,23 @@
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "{{email}}",
+							"type": "text",
+							"uuid": "3ad8fc88-0ec4-4d3c-8627-1e52c6a651a6"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text",
+							"uuid": "0289eeba-36db-40ab-97bc-301958fa814b"
+						}
+					]
+				},
 				"url": {
 					"raw": "{{baseUrl}}/auth/login",
 					"host": [
