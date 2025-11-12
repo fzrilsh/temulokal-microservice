@@ -12,6 +12,7 @@ type Config struct {
 
 	// services
 	AuthServiceOrigin string
+	UMKMServiceOrigin string
 }
 
 func Load() *Config {
@@ -21,6 +22,7 @@ func Load() *Config {
 		JWTSecret:         os.Getenv("JWT_SECRET"),
 		AppPort:           os.Getenv("APP_PORT"),
 		AuthServiceOrigin: os.Getenv("AUTH_SERVICE_ORIGIN"),
+		UMKMServiceOrigin: os.Getenv("UMKM_SERVICE_ORIGIN"),
 	}
 
 	return cfg

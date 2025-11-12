@@ -31,4 +31,6 @@ func RegisterRoutes(app *fiber.App) {
 	auth := app.Group("/auth")
 	auth.Post("/login", loginHandler.Handler)
 	auth.Post("/register", registerHandler.Handler)
+
+	// TODO: umkm index
 }

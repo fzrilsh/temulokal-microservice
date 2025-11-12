@@ -13,5 +13,9 @@ func RegisterRoutes(app *fiber.App, cfg *config.Config, jwtManager *jwt.JWTManag
 		return utils.ProxyRequest(c, cfg.AuthServiceOrigin)
 	})
 
+	app.All("/umkm/*", func(c *fiber.Ctx) error {
+		return utils.ProxyRequest(c, cfg.UMKMServiceOrigin)
+	})
+
 	return nil
 }
