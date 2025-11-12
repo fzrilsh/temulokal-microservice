@@ -1,0 +1,75 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:8.0
+    container_name: temulokal-mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/initdb:/docker-entrypoint-initdb.d
+
+  auth-service:
+    build:
+      context: .
+      dockerfile: auth-service/Dockerfile
+    container_name: auth-service
+    depends_on:
+      - db
+    environment:
+      APP_NAME: "Authentication Service"
+      APP_PORT: "8001"
+      APP_ENV: development
+      APP_ORIGIN: "http://localhost:8001"
+      DB_HOST: "db:3306"
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: temulokal_auth_db
+      JWT_SECRET: "dev-secret"
+    ports:
+      - "8001:8001"
+    command: ["start"]
+
+  umkm-service:
+    build:
+      context: .
+      dockerfile: umkm-service/Dockerfile
+    container_name: umkm-service
+    depends_on:
+      - db
+    environment:
+      UMKM_APP_NAME: "UMKM Service"
+      UMKM_APP_PORT: "8002"
+      APP_ENV: development
+      APP_ORIGIN: "http://localhost:8002"
+      DB_HOST: "db:3306"
+      DB_USER: root
+      DB_PASS: root
+      DB_NAME: temulokal_umkm_db
+    ports:
+      - "8002:8002"
+    command: ["start"]
+
+  gateway:
+    build:
+      context: .
+      dockerfile: gateway/Dockerfile
+    container_name: gateway
+    depends_on:
+      - auth-service
+      - umkm-service
+    environment:
+      APP_PORT: "8000"
+      JWT_SECRET: "dev-secret"
+      AUTH_SERVICE_ORIGIN: "http://auth-service:8001"
+      UMKM_SERVICE_ORIGIN: "http://umkm-service:8002"
+    ports:
+      - "8000:8000"
+    command: ["start"]
+
+volumes:
+  db_data:
