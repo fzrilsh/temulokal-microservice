@@ -7,3 +7,4 @@ run:
 stop:
 	pkill gateway
 	pkill auth-service
+	pkill umkm-service
