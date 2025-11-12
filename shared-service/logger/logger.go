@@ -15,10 +15,10 @@ var (
 )
 
 func Init() {
-	SuccessLogger = log.New(os.Stdout, "✅ SUCCESS: ", log.Ldate|log.Ltime)
-	InfoLogger = log.New(os.Stdout, "ℹ️ INFO: ", log.Ldate|log.Ltime)
-	WarnLogger = log.New(os.Stdout, "⚠️ WARN: ", log.Ldate|log.Ltime)
-	ErrorLogger = log.New(os.Stderr, "❌ ERROR: ", log.Ldate|log.Ltime)
+	SuccessLogger = log.New(os.Stdout, "SUCCESS: ", log.Ldate|log.Ltime)
+	InfoLogger = log.New(os.Stdout, "INFO: ", log.Ldate|log.Ltime)
+	WarnLogger = log.New(os.Stdout, "WARN: ", log.Ldate|log.Ltime)
+	ErrorLogger = log.New(os.Stderr, "ERROR: ", log.Ldate|log.Ltime)
 }
 
 func Success(v string) {
