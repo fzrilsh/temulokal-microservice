@@ -8,8 +8,8 @@ import (
 
 type Config struct {
 	FrontendOrigin string
-	AppPort   string
-	JWTSecret string
+	AppPort        string
+	JWTSecret      string
 
 	// services
 	AuthServiceOrigin string
