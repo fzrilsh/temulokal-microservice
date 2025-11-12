@@ -18,6 +18,7 @@ func StartProxy() {
 	jwtManager := jwt.NewJWTManager(cfg.JWTSecret, time.Hour*24*5)
 
 	app := fiber.New(fiber.Config{
+		AppName: "Gateway",
 		ErrorHandler: func(c *fiber.Ctx, err error) error {
 			logger.Error(err.Error())
 			return response.Error(c, fiber.StatusInternalServerError, "Internal server error", err.Error())
