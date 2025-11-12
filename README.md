@@ -138,6 +138,36 @@ make stop
 ```
 Perintah `make stop` akan mencoba menghentikan proses `gateway`, `auth-service`, dan `umkm-service` yang masih berjalan.
 
+### Menjalankan dengan Docker Compose
+
+Alternatif orkestrasi container menggunakan Docker:
+```
+docker compose build
+docker compose up -d
+```
+
+Service yang berjalan:
+- MySQL: port 3306 (container `db`)
+- Auth Service: port 8001 (container `auth-service`)
+- UMKM Service: port 8002 (container `umkm-service`)
+- Gateway: port 8000 (container `gateway`)
+
+Log salah satu service:
+```
+docker compose logs -f auth-service
+```
+
+Hentikan semua:
+```
+docker compose down
+```
+
+Database otomatis dibuat lewat skrip `docker/initdb/01-create-databases.sql`. Jalankan migrasi di dalam container bila tabel belum terbentuk:
+```
+docker compose exec auth-service /app/auth-service migrate
+docker compose exec umkm-service /app/umkm-service migrate
+```
+
 ## Daftar Endpoint
 
 ### Gateway (Port 8000)
