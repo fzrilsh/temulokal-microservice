@@ -1,24 +1,20 @@
 package cmd
 
 import (
-	"fmt"
 	"os"
-	"temulokal-microservice/umkm-service/bootstrap"
+	"temulokal-microservice/shared-service/logger"
 
 	"github.com/spf13/cobra"
 )
 
 var rootCmd = &cobra.Command{
-	Use:   "umkm-service",
-	Short: "UMKM service CLI",
-	Run: func(cmd *cobra.Command, args []string) {
-		bootstrap.StartServer()
-	},
+	Use:   "temulokal-microservice/umkm-service",
+	Short: "UMKM microservice for TemuLokal",
 }
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Println(err)
+		logger.Error(err.Error())
 		os.Exit(1)
 	}
 }
