@@ -18,6 +18,7 @@ func Migrate(cfg *config.Config) {
 		&model.UMKMGallery{},
 		&model.UMKMLocation{},
 		&model.UMKMWorkHour{},
+		&model.UMKMRating{},
 	)
 	if err != nil {
 		logger.Error(fmt.Sprintf("Migration failed: %v", err))
