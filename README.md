@@ -205,27 +205,8 @@ Menjalankan binary yang sudah dibuild (pastikan `.env` setiap service sudah bena
 
 Catatan: Setiap service adalah binary terpisah (bukan digabung jadi satu proses). Target `make build` mempermudah build “semua jadi satu langkah” namun tetap menghasilkan tiga executable terpisah.
 
-## Struktur Rating & Perhitungan
-
-Tabel `umkm_ratings` menyimpan data individual `(id, umkm_id, value)` dengan value 1–5. Aggregasi `count` dan `star` (rata-rata) dihitung di layer usecase setiap kali endpoint list dipanggil.
-
 ## Konvensi Tambahan
 
 - Tambah service baru: pilih port berikutnya dalam rentang 8000+.
 - Hindari port 8080/3000 default untuk menjaga konsistensi internal.
 - Simpan semua seed SQL di folder `seeds/` masing-masing service.
-
-## Troubleshooting Cepat
-
-- Error migrasi: cek koneksi DB (`DB_HOST`, user/password).
-- Endpoint kosong: pastikan seed sudah dijalankan dan preload di repository sudah benar.
-- Nilai rating 0: berarti belum ada data di `umkm_ratings` untuk UMKM tersebut.
-
-## Next Steps (Opsional)
-
-- Tambah endpoint detail UMKM: `GET /umkm/:id`.
-- Tambah endpoint buat rating: `POST /umkm/:id/ratings`.
-- Pagination & filtering di list UMKM.
-
----
-Dokumen ini bisa diperbarui saat fitur baru ditambahkan.
