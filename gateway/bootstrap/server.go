@@ -10,6 +10,7 @@ import (
 	"time"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
 
@@ -26,10 +27,24 @@ func StartProxy() {
 	})
 
 	app.Use(recover.New())
+	allowedOrigins := cfg.FrontendOrigin
+	allowCreds := true
+	if allowedOrigins == "" {
+		allowedOrigins = "*"
+		allowCreds = false // browsers block credentials with wildcard origin
+	}
+	app.Use(cors.New(cors.Config{
+		AllowOrigins:     allowedOrigins,
+		AllowMethods:     "GET,POST,PUT,PATCH,DELETE,OPTIONS",
+		AllowHeaders:     "Origin, Content-Type, Accept, Authorization, X-Requested-With, X-User-ID",
+		ExposeHeaders:    "Content-Length, X-User-ID",
+		AllowCredentials: allowCreds,
+		MaxAge:           300,
+	}))
 	app.Use(middleware.RateLimit())
 
 	RegisterRoutes(app, cfg, jwtManager)
 
-	logger.Success(fmt.Sprintf("🚀 Gateway proxy running on port %s\n", cfg.AppPort))
+	logger.Success(fmt.Sprintf("Gateway proxy running on port %s\n", cfg.AppPort))
 	app.Listen(":" + cfg.AppPort)
 }
