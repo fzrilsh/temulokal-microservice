@@ -20,7 +20,7 @@ func NewUMKMRepository(db *gorm.DB) UMKMRepository {
 
 func (r *umkmRepository) FindAll() ([]model.UMKM, error) {
 	var list []model.UMKM
-	res := r.db.Preload("Owner").Preload("Gallery").Preload("Location").Preload("WorkHours").Find(&list)
+	res := r.db.Preload("Owner").Preload("Gallery").Preload("Location").Preload("WorkHours").Preload("Ratings").Find(&list)
 	if res.Error != nil {
 		return nil, res.Error
 	}
