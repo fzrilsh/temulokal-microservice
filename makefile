@@ -5,6 +5,14 @@ run:
 	wait
 
 stop:
-	pkill gateway
-	pkill auth-service
-	pkill umkm-service
+	pkill gateway || true
+	pkill auth-service || true
+	pkill umkm-service || true
+
+build:
+	mkdir -p bin
+	cd gateway && go build -o ../bin/gateway .
+	cd auth-service && go build -o ../bin/auth-service .
+	cd umkm-service && go build -o ../bin/umkm-service .
+
+.PHONY: run stop build
