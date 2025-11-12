@@ -36,7 +36,7 @@ func StartServer() {
 	RegisterRoutes(app)
 
 	env := strings.ToUpper(cfg.AppEnv)
-	logger.Success(fmt.Sprintf("🚀 Auth service running in %s on port %s\n", env, cfg.AppPort))
+	logger.Success(fmt.Sprintf("Auth service running in %s on port %s\n", env, cfg.AppPort))
 
 	app.Listen(":" + cfg.AppPort)
 }
