@@ -136,18 +136,27 @@ func mapUMKMToResponse(m model.UMKM) UMKMResponse {
 		}
 	}
 
+	// Compute rating aggregate from individual ratings
+	var count int
+	var sum float32
+	for _, r := range m.Ratings {
+		count++
+		sum += float32(r.Value)
+	}
+	avg := float32(0)
+	if count > 0 {
+		avg = sum / float32(count)
+	}
+
 	return UMKMResponse{
-		ID:          m.ID,
-		Name:        m.Name,
-		About:       m.About,
-		Description: m.Description,
-		Icon:        m.Icon,
-		Slug:        m.Slug,
-		Type:        m.Type,
-		Rating: UMKMRating{
-			Count: m.RatingCount,
-			Star:  m.RatingStar,
-		},
+		ID:           m.ID,
+		Name:         m.Name,
+		About:        m.About,
+		Description:  m.Description,
+		Icon:         m.Icon,
+		Slug:         m.Slug,
+		Type:         m.Type,
+		Rating:       UMKMRating{Count: count, Star: avg},
 		Owner:        owner,
 		Gallery:      gallery,
 		Location:     location,
