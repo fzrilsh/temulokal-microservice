@@ -64,10 +64,6 @@ jobs:
           *.tmp
           .DS_Store
           EOF
-          # Optionally place the same in each service folder
-          for d in gateway auth-service umkm-service; do
-            cp release/.gitignore "release/$d/.gitignore"
-          done
 
       - name: Generate checksums and metadata
         run: |
