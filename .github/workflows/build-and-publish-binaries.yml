@@ -51,6 +51,24 @@ jobs:
             cp -r umkm-service/seeds/* release/umkm-service/seeds/
           fi
 
+      - name: Add .gitignore for binary branch
+        run: |
+          set -euo pipefail
+          cat > release/.gitignore << 'EOF'
+          # Ignore environment files and logs on binary branch
+          .env
+          *.env
+          *.log
+          logs/
+          log/
+          *.tmp
+          .DS_Store
+          EOF
+          # Optionally place the same in each service folder
+          for d in gateway auth-service umkm-service; do
+            cp release/.gitignore "release/$d/.gitignore"
+          done
+
       - name: Generate checksums and metadata
         run: |
           set -euo pipefail
