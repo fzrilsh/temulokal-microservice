@@ -1,0 +1,8 @@
+a670853c0675276cf72fe310908546b219337029b16ea60b7a18822899804aab  ./auth-service/auth-service
+08eb5d10267f76b2ca45d71e6c7977d31e0eff4cb1cdc0707c8fe4e9a113a612  ./auth-service/.env.example
+a13da57035ae9bfd873350db96dc302f0ebf1921fe73d8a62b2427b2975de745  ./.gitignore
+a0108e1277fc30286ff0cdc6b82689fb8df2372e873423187a1ca45abcc0ea32  ./umkm-service/umkm-service
+ec04541c297a965a0a2eae0c3acc53aa71031559ee009feb7359b25c076cea2e  ./umkm-service/.env.example
+4e323ebea0548afa40ff89d4c303c4aab2b99fb1b7dd6213863f7ba3b564248c  ./sha256sum.txt
+c3ae8d2c36b41695f9d2ead5e2ca7a5a7e8a89631bd36e2f5a7383e28a0a59db  ./gateway/.env.example
+4738bdc13feb6e3de1957354dbe5ffb5e4e68a71f1c502167927ca86e130a5b8  ./gateway/gateway

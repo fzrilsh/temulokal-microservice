@@ -1,0 +1,8 @@
+# Ignore environment files and logs on binary branch
+.env
+*.env
+*.log
+logs/
+log/
+*.tmp
+.DS_Store
