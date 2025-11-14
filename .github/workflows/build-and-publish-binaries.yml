@@ -1,0 +1,61 @@
+name: Build and Publish Binaries
+
+on:
+  push:
+    branches: [ main ]
+    paths-ignore:
+      - '**.md'
+      - '**.sql'
+      - '.gitignore'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+
+      - name: Build all services
+        run: |
+          set -euo pipefail
+          mkdir -p release
+          go work sync || true
+          go env
+          echo "Building gateway..."
+          go build -o release/gateway ./gateway
+          echo "Building auth-service..."
+          go build -o release/auth-service ./auth-service
+          echo "Building umkm-service..."
+          go build -o release/umkm-service ./umkm-service
+
+      - name: Generate checksums and metadata
+        run: |
+          set -euo pipefail
+          (cd release && sha256sum * > sha256sum.txt)
+          printf "Built from commit %s on %s\n" "${{ github.sha }}" "$(date -u)" > release/README.txt
+
+      - name: Upload artifact (for this run)
+        uses: actions/upload-artifact@v4
+        with:
+          name: binaries
+          path: release
+
+      - name: Publish to binary branch
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: binary
+          folder: release
+          clean: true
+          single-commit: true
+          commit-message: "ci: publish binaries for ${{ github.sha }}"
