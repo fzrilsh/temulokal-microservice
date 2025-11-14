@@ -27,12 +27,10 @@ func StartServer() {
 	})
 
 	app.Use(recover.New())
-	// Temporarily allow all origins (no credentials with wildcard)
 	app.Use(cors.New(cors.Config{
-		AllowOrigins:     cfg.FrontendOrigin,
-		AllowMethods:     "GET,POST,PUT,DELETE,OPTIONS,PATCH",
-		AllowHeaders:     "*",
-		AllowCredentials: false,
+		AllowOrigins: cfg.AppOrigin,
+		AllowMethods: "GET,POST,PUT,DELETE,OPTIONS",
+		AllowHeaders: "Origin, Content-Type, Accept, Authorization, Cookie",
 	}))
 
 	RegisterRoutes(app)
